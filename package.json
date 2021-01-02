@@ -1,0 +1,28 @@
+{
+  "name": "@tripsit/website-api",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+		"start": "NODE_ENV=production node .",
+		"dev": "NODE_ENV=development nodemon --inspect .",
+		"test": "npm run lint",
+		"lint": "eslint server .eslintrc.js index.js logger.js"
+  },
+  "keywords": [],
+  "author": "TripSit <dev@tripsit.me>",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-promise-router": "^4.0.1",
+    "winston": "^3.3.3",
+    "yup": "^0.32.8"
+  },
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.6"
+  }
+}
