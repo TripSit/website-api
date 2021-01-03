@@ -1,6 +1,6 @@
 <mjml>
 	<mj-head>
-		<mj-title>Media Request: xxx</mj-title>
+		<mj-title>Media Request: {{ organization }}</mj-title>
 		<mj-include path="./includes/typography.mjml" />
 	</mj-head>
 	<mj-body>
@@ -8,7 +8,17 @@
 	<!-- Primary Heading -->
 	<mj-section>
 		<mj-column>
-			<mj-text mj-class="primary-head">Media Request: xxx</mj-text>
+			<mj-text mj-class="primary-head">Media Request: {{ organization }}</mj-text>
+		</mj-column>
+	</mj-section>
+
+	<!-- Question -->
+	<mj-section>
+		<mj-column>
+			<mj-text font-style="italic">{{ question }}</mj-text>
+			<mj-text>
+				<a href="mailto:{{ email }}" target="_blank">{{ email }}</a>
+			</mj-text>
 		</mj-column>
 	</mj-section>
 
