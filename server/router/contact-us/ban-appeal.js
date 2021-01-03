@@ -2,7 +2,7 @@
 
 const Yup = require('yup');
 
-module.exports = function banAppealRoute(router, { validate }) {
+module.exports = function banAppealRoute(router, { email, validate }) {
 	router.post(
 		'/ban-appeal',
 
@@ -18,7 +18,7 @@ module.exports = function banAppealRoute(router, { validate }) {
 		}).required()),
 
 		async (req, res) => {
-			res.sendStatus(201);
+
 		},
 	);
 };
