@@ -2,7 +2,19 @@
 
 const request = require('supertest');
 const createServer = require('../server');
+const createEmail = require('../email');
+
+jest.mock('nodemailer');
 
 module.exports = async function createTestServer() {
-	return request(createServer());
+	const logger = {
+		info: jest.fn(),
+		error: jest.fn(),
+		warn: jest.fn(),
+	};
+
+	return request(createServer({
+		logger,
+		email: await createEmail(),
+	}));
 };

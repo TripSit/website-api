@@ -1,6 +1,6 @@
 'use strict';
 
-const createTestServer = require('./server');
+const request = require('supertest');
 
 describe('post /contact-us/ban-appeal', () => {
 	const validRequest = {
@@ -11,14 +11,14 @@ describe('post /contact-us/ban-appeal', () => {
 	};
 
 	describe('validation', () => {
-		it('valid request', async () => createTestServer()
+		it('valid request', async () => request(app)
 			.post('/contact-us/ban-appeal')
 			.set('Accept', 'application/json')
 			.send(validRequest)
 			.expect('Content-Type', /json/)
 			.expect(201));
 
-		it('requires a nick', async () => createTestServer()
+		it('requires a nick', async () => request(app)``
 			.post('/contact-us/ban-appeal')
 			.set('Accept', 'application/json')
 			.send({ ...validRequest, nick: undefined })

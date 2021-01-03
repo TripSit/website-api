@@ -18,7 +18,7 @@ module.exports = {
 				'tests/**/*.spec.js',
 				'jest.setup.js',
 				'**/__mocks__/*.js',
-				'tests/server/*.js',
+				'tests/server.js',
 			],
 			plugins: ['jest'],
 			extends: ['plugin:jest/all'],
@@ -31,6 +31,10 @@ module.exports = {
 				'jest/expect-expect': 0,
 				'import/no-extraneous-dependencies': [2, { devDependencies: true }],
 			},
+		},
+		{
+			files: ['tests/**/*.spec.js'],
+			globals: { app: true },
 		},
 	],
 };
