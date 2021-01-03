@@ -6,11 +6,7 @@ const nodemailer = require('nodemailer');
 const Handlebars = require('handlebars');
 const mjml2html = require('mjml');
 
-async function createTemplate(templateName) {
-	const mjml = await fs.readFile(path.join(__dirname, `${templateName}.mjml`), 'utf-8');
-	const template = Handlebars.compile(mjml);
-	return (...args) => mjml2html(template(...args));
-}
+const TEMPLATE_NAMES = ['ban-appeal', 'media', 'suggestions', 'volunteer'];
 
 module.exports = async function createEmail() {
 	const transport = nodemailer.createTransport({
@@ -24,39 +20,19 @@ module.exports = async function createEmail() {
 		},
 	});
 
-	async function send(subject, html) {
-		return transport.sendMail({
-			subject,
-			html,
-			from: process.env.EMAIL_FROM,
-			to: process.env.EMAIL_TO,
-		});
-	}
-
-	const templates = await Promise.all(['ban-appeal', 'media', 'suggestions', 'volunteer']
-		.map(createTemplate))
+	return Promise.all(TEMPLATE_NAMES
+		.map(templateName => path.join(__dirname, `${templateName}.mjml`))
+		.map(templatePath => fs.readFile(templatePath, 'utf-8')
+			.then(Handlebars.compile)
+			.then(template => viewData => transport.sendMail({
+				from: process.env.EMAIL_FROM,
+				to: process.env.EMAIL_TO,
+				html: mjml2html(template(viewData)),
+			}))))
 		.then(([banAppeal, media, suggestions, volunteer]) => ({
 			banAppeal,
 			media,
 			suggestions,
 			volunteer,
 		}));
-
-	return {
-		async banAppeal(nick, templateData) {
-			return send(`Ban Appeal: ${nick}`, templates.banAppeal(templateData));
-		},
-
-		async media() {
-			return send('Media Request', templates.media());
-		},
-
-		async suggestions() {
-			return send('Suggestion', templates.suggestions());
-		},
-
-		async volunteer() {
-			return send('Application', templates.volunteer());
-		},
-	};
 };
