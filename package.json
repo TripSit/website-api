@@ -7,7 +7,8 @@
     "start": "NODE_ENV=production node .",
     "dev": "NODE_ENV=development nodemon --inspect .",
     "test": "npm run lint",
-    "lint": "eslint server .eslintrc.js index.js logger.js"
+		"lint": "eslint server .eslintrc.js index.js logger.js",
+		"mjml:validate": "mjml -v ./email/**/*.mjml"
   },
   "keywords": [],
   "author": "TripSit <dev@tripsit.me>",

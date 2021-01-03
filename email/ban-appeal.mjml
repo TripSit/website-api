@@ -1,36 +1,52 @@
 <mjml>
 	<mj-head>
-		<mj-title>Tripsit: Ban Appeal</mj-title>
-		<mj-attributes>
-			<mj-all font-family="Helvetica, Arial, sans-serif" />
-			<mj-text font-weight="400" font-size="14px" color="#000000" line-height="21px" />
-		</mj-attributes>
+		<mj-title>Ban Appeal: {{ nick }}</mj-title>
+		<mj-preview>Ban appeal from {{ nick }}</mj-preview>
+		<mj-include path="./includes/typography.mjml" />
+		<mj-include path="./includes/table.mjml" />
 	</mj-head>
 	<mj-body>
 
+		<!-- Primary Heading -->
 		<mj-section>
 			<mj-column>
-				<mj-text>Ban Appeal: ${nick}</mj-text>
+				<mj-text mj-class="primary-heading">Ban Appeal: {{ nick }}</mj-text>
 			</mj-column>
 		</mj-section>
 
+		<!-- Instructions -->
+		<mj-section>
+			<mj-column>
+				<mj-text>
+					Please review this ban appeal and reply to this email with your response. Include any
+					relevent discussions in said email that have taken place on IRC.
+				</mj-text>
+			</mj-column>
+		</mj-section>
+
+		<!-- Form Results -->
 		<mj-section>
 			<mj-column>
 				<mj-table>
 					<tr>
-						<th>E</th>
-						<td>${email}
-					<tr>
-						<th>Question</th>
-						<th>Response</th>
+						<th mj-class="table-head-cell">Question</th>
+						<th mj-class="table-head-cell">Response</th>
 					</tr>
+					<tr>
+						<th>Email</th>
+						<td>{{ email }}</td>
+					<tr>
 					<tr>
 						<th>Understanding ban reason</th>
-						<td>${understanding}</td>
+						<td>{{ understanding }}</td>
 					</tr>
 					<tr>
-						<th>Additional Information</th>
-						<td>${additional}</td>
+						<th>Additional information</th>
+						<td>{{ additional }}</td>
+					</tr>
+					<tr>
+						<th>Prevention</th>
+						<td>{{ prevention }}</td>
 					</tr>
 				</mj-table>
 			</mj-column>
