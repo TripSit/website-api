@@ -1,13 +1,8 @@
 'use strict';
 
+const request = require('supertest');
 const createServer = require('../server');
-const createEmail = require('../email');
-const createLogger = require('../logger');
 
-module.exports = function createTestServer(deps) {
-	return createServer({
-		email: createEmail(),
-		logger: createLogger(),
-		...deps,
-	});
+module.exports = async function createTestServer() {
+	return request(createServer());
 };

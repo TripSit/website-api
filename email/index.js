@@ -21,7 +21,8 @@ module.exports = async function createEmail() {
 	});
 
 	return Promise.all(TEMPLATE_NAMES
-		.map(templateName => fs.readFile(path.join(__dirname, `${templateName}.mjml`), 'utf-8')
+		.map(templateName => path.join(__dirname, `${templateName}.mjml`))
+		.map(templatePath => fs.readFile(templatePath, 'utf-8')
 			.then(Handlebars.compile)
 			.then(template => viewData => transport.sendMail({
 				from: process.env.EMAIL_FROM,

@@ -2,12 +2,12 @@
 
 const Yup = require('yup');
 
-module.exports = function banAppealRoute(router, { email, validate }) {
+module.exports = function banAppealRoute(router, { validate }) {
 	router.post(
 		'/ban-appeal',
 
 		validate(Yup.object().shape({
-			nick: Yup.string().required('Your IRC nick / username is required'),
+			nick: Yup.string().required('IRC nick / username is required'),
 			email: Yup.string().email('Not a valid email address, leave blank to omit'),
 			understanding: Yup
 				.string()
@@ -17,8 +17,8 @@ module.exports = function banAppealRoute(router, { email, validate }) {
 			prevention: Yup.string(),
 		}).required()),
 
-		async (req, res) => {
-
-		},
+		// async (req, res) => {
+		// 	email.banAppeal(req.body.nick, );
+		// },
 	);
 };

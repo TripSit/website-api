@@ -1,4 +1,4 @@
-FROM node:15.4.0-alpine3.12 as tripsit_website_main
+FROM node:15.4.0-alpine3.12 as tripsit_website_api
 
 WORKDIR /usr/src/app
 
