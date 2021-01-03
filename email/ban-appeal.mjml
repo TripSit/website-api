@@ -1,0 +1,40 @@
+<mjml>
+	<mj-head>
+		<mj-title>Tripsit: Ban Appeal</mj-title>
+		<mj-attributes>
+			<mj-all font-family="Helvetica, Arial, sans-serif" />
+			<mj-text font-weight="400" font-size="14px" color="#000000" line-height="21px" />
+		</mj-attributes>
+	</mj-head>
+	<mj-body>
+
+		<mj-section>
+			<mj-column>
+				<mj-text>Ban Appeal: ${nick}</mj-text>
+			</mj-column>
+		</mj-section>
+
+		<mj-section>
+			<mj-column>
+				<mj-table>
+					<tr>
+						<th>E</th>
+						<td>${email}
+					<tr>
+						<th>Question</th>
+						<th>Response</th>
+					</tr>
+					<tr>
+						<th>Understanding ban reason</th>
+						<td>${understanding}</td>
+					</tr>
+					<tr>
+						<th>Additional Information</th>
+						<td>${additional}</td>
+					</tr>
+				</mj-table>
+			</mj-column>
+		</mj-section>
+
+	</mj-body>
+</mjml>
